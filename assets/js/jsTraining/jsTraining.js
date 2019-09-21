@@ -97,47 +97,47 @@
         console.log('_initialize');
         
         /**
-         * 讀取全部
-          */
-         /**
- * 讀取一筆
- */
-$.ajax({
-    method: 'GET',
-    // 讀取id為3的資料
-    url: self._ajaxUrls.accountApi + '/3',
-    dataType: 'json',
-  }).done(function(data) {
-    // 處理回傳資料
-    $('<div>' + JSON.stringify(data) + '</div>').appendTo($('.ctrl-message'));
-  });
+         * 讀取一筆
+         */
+        $.ajax({
+          method: 'GET',
+          // 讀取id為3的資料
+          url: self._ajaxUrls.accountApi + '/3',
+          dataType: 'json',
+        }).done(function(data) {
+          // 處理回傳資料
+          $('<div>' + JSON.stringify(data) + '</div>').appendTo($('.ctrl-message'));
+        });
+        
+        /**
+         * 更新一筆
+         */
+        $.ajax({
+          method: 'PUT',
+          url: self._ajaxUrls.accountApi,
+          data: { name: 'John', location: 'Boston' },
+          dataType: 'json',
+        }).done(function(data) {
+          // 處理回傳資料
+          $('<div>' + JSON.stringify(data) + '</div>').appendTo($('.ctrl-message'));
+        });
 
-  $.ajax({
-    method: 'PUT',
-    url: self._ajaxUrls.accountApi,
-    data: { name: 'John', location: 'Boston' },
-    dataType: 'json',
-  }).done(function(data) {
-    // 處理回傳資料
-    $('<div>' + JSON.stringify(data) + '</div>').appendTo($('.ctrl-message'));
-  });
-
-  /**
- * 刪除錯誤 No Delete ID
- */
-$.ajax({
-    method: 'DELETE',
-    // 刪除id為2的資料
-    url: self._ajaxUrls.accountApi + '/2',
-    dataType: 'json',
-  }).done(function(data) {
-    // 處理回傳資料
-    $('<div>' + JSON.stringify(data) + '</div>').appendTo($('.ctrl-message'));
-  }).fail(function (jqXHR) {
-    // 錯誤處理
-    $('<div>' + jqXHR.responseText + '</div>').appendTo($('.ctrl-message'));
-    console.log(jqXHR);
-  });
+        /**
+         * 刪除錯誤 No Delete ID
+         */
+        $.ajax({
+          method: 'DELETE',
+          // 刪除id為2的資料
+          url: self._ajaxUrls.accountApi + '/2',
+          dataType: 'json',
+        }).done(function(data) {
+          // 處理回傳資料
+          $('<div>' + JSON.stringify(data) + '</div>').appendTo($('.ctrl-message'));
+        }).fail(function (jqXHR) {
+          // 錯誤處理
+          $('<div>' + jqXHR.responseText + '</div>').appendTo($('.ctrl-message'));
+          console.log(jqXHR);
+        });
   
         
 
@@ -156,14 +156,6 @@ $.ajax({
         // 按下按鈕時，變更tag:h1文字為「** Javascript Training **」
         $('.ctrl-btn').on('click', function() {
             $('h1').text('** Javascript Training **');
-        });
-
-        // 偵測滑鼠座標
-        $(document).on('mousemove', function(ev) {
-            ev = ev || window.event;
-            if (ev.pageX || ev.pageY) {
-                $('.ctrl-message').html('X: ' + ev.pageX + '<br>Y: ' + ev.pageY);
-            }
         });
 
         /**
