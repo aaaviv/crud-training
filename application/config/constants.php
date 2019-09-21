@@ -1,4 +1,11 @@
 <?php
+/**
+ * System Path
+ */
+define('ASSETS', '/assets/');
+define('CSS_DIR', ASSETS . 'css/');
+define('JS_DIR', ASSETS . 'js/');
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
